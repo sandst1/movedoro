@@ -4,10 +4,16 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { TimerComponent } from './timer/timer.component';
+import { TimefmtPipe } from './timefmt.pipe';
+import { PomodoroComponent } from './pomodoro/pomodoro.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TimerComponent,
+    TimefmtPipe,
+    PomodoroComponent
   ],
   imports: [
     BrowserModule,

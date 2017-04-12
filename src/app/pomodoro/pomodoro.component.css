@@ -1,0 +1,7 @@
+.pomodoro {
+  width: 500px;
+  height: 300px;
+  position: fixed;
+  left: calc(50vw - 250px);
+  top: 35%;
+}

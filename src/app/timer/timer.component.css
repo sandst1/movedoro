@@ -1,0 +1,23 @@
+.timer-value {
+  font-size: 10em;
+  cursor: default;
+  width: 250px;
+  margin: 0 auto;
+  text-align: left;  
+}
+
+.timer-button {
+  font-size: 3em;
+  padding: 15px;
+  cursor: pointer;
+  display: inline-block;
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  outline: none;
+}
+
+.timer-button:hover {
+  color: #cccccc;
+}
