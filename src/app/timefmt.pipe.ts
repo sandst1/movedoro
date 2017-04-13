@@ -13,7 +13,6 @@ export class TimefmtPipe implements PipeTransform {
     let secStr = this.zeroPad(secs);
 
     const timeStr = `${minStr}:${secStr}`;
-    document.title = timeStr;
 
     return timeStr;
   }

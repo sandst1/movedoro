@@ -8,6 +8,8 @@ import { TimerComponent } from './timer/timer.component';
 import { TimefmtPipe } from './timefmt.pipe';
 import { PomodoroComponent } from './pomodoro/pomodoro.component';
 
+import { BrowserTitleService} from './browser-title.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,9 @@ import { PomodoroComponent } from './pomodoro/pomodoro.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    BrowserTitleService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

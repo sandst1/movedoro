@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { TimerComponent } from '../timer/timer.component';
+import { BrowserTitleService } from '../browser-title.service';
 
 @Component({
   selector: 'app-pomodoro',
@@ -8,6 +9,7 @@ import { TimerComponent } from '../timer/timer.component';
   styleUrls: ['./pomodoro.component.css']
 })
 export class PomodoroComponent implements OnInit {
+  defaultSuffix: string = 'Liikelaajentamo';
   pomodoroActive: boolean = true;
 
   /*pomodoroLength: number = 25*60;
@@ -21,9 +23,22 @@ export class PomodoroComponent implements OnInit {
   @ViewChild('timer')
   timer: TimerComponent;
 
-  constructor() { }
+  titleService: BrowserTitleService = null;
+
+  constructor(titleService: BrowserTitleService) { 
+    this.titleService = titleService;
+  }
 
   ngOnInit() {
+    this.titleService.setSuffix(this.defaultSuffix);
+  }
+
+  timerStarted() {
+    this.titleService.setSuffix(
+      this.pomodoroActive ?
+        'työskentely':
+        'tauko'
+    );
   }
 
   timeUp() {
@@ -34,6 +49,8 @@ export class PomodoroComponent implements OnInit {
     } else {
       this.pomodoroActive = true;
       this.timer.resetWith(this.pomodoroLength);
+      this.titleService.setSuffix(this.defaultSuffix);
+      this.titleService.setTitle('');
     }
   }
 

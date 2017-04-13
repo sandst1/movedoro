@@ -6,6 +6,8 @@ import {
   OnInit 
 } from '@angular/core';
 
+import { BrowserTitleService } from '../browser-title.service';
+
 @Component({
   selector: 'app-timer',
   templateUrl: './timer.component.html',
@@ -19,11 +21,17 @@ export class TimerComponent implements OnInit {
   @Output()
   timeUp = new EventEmitter();
 
+  @Output()
+  timerStarted = new EventEmitter();
+
   time:number = 0;
   running: boolean = false;
   intervalId = null;
 
-  constructor() {
+  titleService: BrowserTitleService = null;
+
+  constructor(titleService: BrowserTitleService) {
+    this.titleService = titleService;
   }
 
   ngOnInit() {
@@ -41,14 +49,16 @@ export class TimerComponent implements OnInit {
 
   startTimer() {
     this.running = true;
+    this.timerStarted.emit();
     this.intervalId = setInterval(() => {
         this.time--;
-        document.title = this.formatTime(this.time);
         if (this.time < 0) {
           clearInterval(this.intervalId);
           this.running = false;
           this.time = 0;
           this.timeUp.emit();
+        } else {
+          this.titleService.setTitle(this.formatTime(this.time));
         }
       }, 1000);
   }
@@ -67,10 +77,8 @@ export class TimerComponent implements OnInit {
   resetWith(newTime) {
     clearInterval(this.intervalId);
     this.running = false;
-    this.time = newTime;    
+    this.time = newTime;
   }
-
-  
 
   formatTime(seconds: number): any {
     const mins = Math.floor(seconds / 60);
