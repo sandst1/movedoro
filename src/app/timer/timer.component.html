@@ -1,8 +1,13 @@
-<div class="timer-value">
-  {{time | timefmt}}
-</div>
+<div class="app-timer"
+ [class.break-active]="breakActive">
 
-<div class="button-row">
-  <span class="timer-button" (click)="toggle()">{{running ? 'pysäytä': 'aloita'}}</span>
-  <span class="timer-button" (click)="reset()">nollaa</span>
+  <div class="timer-value">
+    {{time | timefmt}}
+  </div>
+
+  <div class="button-row">
+    <span *ngIf="!breakActive" class="timer-button" (click)="toggle()">{{running ? 'pysäytä': 'aloita'}}</span>
+    <span class="timer-button" (click)="reset()">nollaa</span>
+  </div>
+
 </div>

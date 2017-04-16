@@ -30,6 +30,7 @@ export class TimerComponent implements OnInit {
   time:number = 0;
   running: boolean = false;
   intervalId = null;
+  breakActive: boolean = false;
 
   titleService: BrowserTitleService = null;
 
@@ -79,6 +80,10 @@ export class TimerComponent implements OnInit {
     clearInterval(this.intervalId);
     this.running = false;
     this.time = newTime;
+  }
+
+  setBreak(breakActive) {
+    this.breakActive = breakActive;
   }
 
   formatTime(seconds: number): any {

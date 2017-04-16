@@ -1,4 +1,8 @@
-<div class="pomodoro">
+<div class="break-text" *ngIf="!pomodoroActive">
+  Työjakso tehty. Hyvä! Harjoittele seuraavaksi jotain muuta asentoa.
+</div>
+
+<div class="pomodoro" [class.break-active]="!pomodoroActive">
 
   <app-timer
     #timer

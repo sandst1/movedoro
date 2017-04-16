@@ -52,6 +52,7 @@ export class PomodoroComponent implements OnInit {
       this.titleService.setSuffix(this.defaultSuffix);
       this.titleService.setTitle('');
     }
+    this.timer.setBreak(!this.pomodoroActive);
   }
 
   resetTimer() {

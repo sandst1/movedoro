@@ -1,7 +1,31 @@
 .pomodoro {
   width: 500px;
-  height: 300px;
+  height: 400px;
   position: fixed;
   left: calc(50vw - 250px);
   top: 35%;
+}
+
+.pomodoro.break-active {
+  top: 25%;
+  width: 1000px;
+  left: calc(50vw - 500px);
+}
+
+.break-text {
+  display: block;
+  font-size: 6em;
+  position: fixed;
+  width: 90vw;
+  margin: 0 5vw;
+  text-align: center;
+  top: 35%;
+  left: 0;
+  right: 0;
+}
+
+@media only screen and (max-width:768px) {
+  .break-text {
+    font-size: 2.5em;
+  }
 }
