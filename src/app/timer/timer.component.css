@@ -7,8 +7,8 @@
 }
 
 .timer-button {
-  font-size: 3em;
-  padding: 15px;
+  font-size: 2em;
+  padding: 5px;
   cursor: pointer;
   display: inline-block;
   width: 100px;
@@ -16,8 +16,18 @@
   line-height: 30px;
   text-align: center;
   outline: none;
+
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);  
+}
+
+.timer-button:first-child {
+  margin-right: 5px;
+}
+
+.timer-button:nth-child(2) {
+  margin-left: 5px;
 }
 
 .timer-button:hover {
-  color: #cccccc;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);  
 }

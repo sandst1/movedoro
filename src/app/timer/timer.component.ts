@@ -24,6 +24,9 @@ export class TimerComponent implements OnInit {
   @Output()
   timerStarted = new EventEmitter();
 
+  @Output()
+  resetTimer = new EventEmitter();
+
   time:number = 0;
   running: boolean = false;
   intervalId = null;
@@ -64,9 +67,7 @@ export class TimerComponent implements OnInit {
   }
 
   reset() {
-    clearInterval(this.intervalId);
-    this.running = false;
-    this.time = this.amount;
+    this.resetTimer.emit();
   }
 
   startWith(newTime: number) {

@@ -2,6 +2,7 @@
   {{time | timefmt}}
 </div>
 
-<span class="timer-button" (click)="toggle()">{{running ? 'pysäytä': 'aloita'}}</span>
-<span class="timer-button" (click)="reset()">nollaa</span>
-
+<div class="button-row">
+  <span class="timer-button" (click)="toggle()">{{running ? 'pysäytä': 'aloita'}}</span>
+  <span class="timer-button" (click)="reset()">nollaa</span>
+</div>

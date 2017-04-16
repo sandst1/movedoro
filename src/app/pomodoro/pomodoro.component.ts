@@ -54,4 +54,11 @@ export class PomodoroComponent implements OnInit {
     }
   }
 
+  resetTimer() {
+    this.pomodoroActive = true;
+    this.timer.resetWith(this.pomodoroLength);
+    this.titleService.setSuffix(this.defaultSuffix);
+    this.titleService.setTitle('');    
+  }
+
 }
