@@ -1,12 +1,22 @@
+.app-timer {
+  width: 250px;
+  position: fixed;
+  left: 42vw;
+  bottom: 44vh;
+  transition: bottom 0.2s ease-in;
+}
+
 .app-timer.break-active {
   position: fixed;
   left: 42vw;
   bottom: 50px;
+  transition: bottom 0.25s ease-out;
 }
 
 .app-timer.break-active .timer-value {
   font-size: 5em !important;
   text-align: center;
+  transition: font 0.25s ease;
 }
 
 .app-timer.break-active .timer-button {
@@ -16,9 +26,9 @@
 .timer-value {
   font-size: 10em;
   cursor: default;
-  width: 250px;
   margin: 0 auto;
-  text-align: left;
+  text-align: center;
+  transition: font 0.25s ease;
 }
 
 .timer-button {

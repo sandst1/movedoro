@@ -1,5 +1,5 @@
-<div class="break-text" *ngIf="!pomodoroActive">
-  Työjakso tehty. Hyvä! Harjoittele seuraavaksi jotain muuta asentoa.
+<div class="break-text" [class.visible]="!pomodoroActive">
+  {{breakThought}}
 </div>
 
 <div class="pomodoro" [class.break-active]="!pomodoroActive">

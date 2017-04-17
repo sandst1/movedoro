@@ -13,6 +13,11 @@
 }
 
 .break-text {
+  width: 0;
+  opacity: 0;
+}
+
+.break-text.visible {
   display: block;
   font-size: 6em;
   position: fixed;
@@ -22,6 +27,8 @@
   top: 35%;
   left: 0;
   right: 0;
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
 }
 
 @media only screen and (max-width:768px) {

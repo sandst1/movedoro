@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { TimerComponent } from '../timer/timer.component';
 import { BrowserTitleService } from '../browser-title.service';
+import { BreakThoughtService } from '../break-thought.service';
 
 @Component({
   selector: 'app-pomodoro',
@@ -19,14 +20,20 @@ export class PomodoroComponent implements OnInit {
   breakLength: number = 3;
 
   timerSec: number = this.pomodoroLength;
+  breakThought: string = "";
 
   @ViewChild('timer')
   timer: TimerComponent;
 
   titleService: BrowserTitleService = null;
+  thoughtService: BreakThoughtService = null
 
-  constructor(titleService: BrowserTitleService) { 
+  constructor(
+    titleService: BrowserTitleService,
+    thoughtService: BreakThoughtService
+  ) { 
     this.titleService = titleService;
+    this.thoughtService = thoughtService;
   }
 
   ngOnInit() {
@@ -44,6 +51,7 @@ export class PomodoroComponent implements OnInit {
   timeUp() {
     if (this.pomodoroActive) {
       this.pomodoroActive = false;
+      this.breakThought = this.thoughtService.gimmeAThought();
       this.timerSec = this.breakLength;
       this.timer.startWith(this.timerSec);
     } else {

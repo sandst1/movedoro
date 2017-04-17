@@ -9,6 +9,7 @@ import { TimefmtPipe } from './timefmt.pipe';
 import { PomodoroComponent } from './pomodoro/pomodoro.component';
 
 import { BrowserTitleService} from './browser-title.service';
+import { BreakThoughtService } from './break-thought.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BrowserTitleService} from './browser-title.service';
     HttpModule
   ],
   providers: [
-    BrowserTitleService
+    BrowserTitleService,
+    BreakThoughtService
   ],
   bootstrap: [AppComponent]
 })
