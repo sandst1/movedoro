@@ -34,6 +34,8 @@ export class PomodoroComponent implements OnInit {
   ) { 
     this.titleService = titleService;
     this.thoughtService = thoughtService;
+
+    this.resetTimer = this.resetTimer.bind(this);
   }
 
   ngOnInit() {

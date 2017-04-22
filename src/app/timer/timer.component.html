@@ -6,13 +6,49 @@
   </div>
 
   <div class="button-row">
-    <span *ngIf="!breakActive" class="timer-button" (click)="toggle()">{{running ? 'pysäytä': 'aloita'}}</span>
-    <span class="timer-button" (click)="reset()">nollaa</span>
+    <button type="button" *ngIf="!breakActive" class="btn btn-secondary" (click)="toggle()">{{running ? 'pysäytä': 'aloita'}}</button>
+    <button type="button" class="btn btn-secondary" (click)="reset()">nollaa</button>
   </div>
 
   <div class="app-toolbar">
-    <i class="fa fa-cog"></i>
-    <i class="fa fa-info-circle"></i>
+    <i class="fa fa-cog" (click)="openSettings()"></i>
+    <i class="fa fa-info-circle" (click)="openInfo()"></i>
   </div>
-
 </div>
+
+<ng-template #infoWindow let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Mikä tauotin?</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>
+      Tauotin on apulainen minkä tahansa keskittymistä vaativan tehtävän jaksottamiseen.
+      Se perustuu Pomodoro-tekniikkaan. Tee näin: <br/><br/>
+      1. Sulje kaikki tehtävääsi liittymättömät asiat. Jos et tarvitse sähköpostia, laita se pois. 
+      Samoin kuin pikaviestimet, Facebookit, uutissivustot ja kaikki muu epäoleellinen.<br/>
+      2. Käynnistä ajastin ja keskity tekemään vain töitä kunnes aika on nollassa.<br/>
+      3. Pidä pieni tauko, esimerkiksi viisi minuuttia. Liiku, venyttele, kävele, hengitä. <br/>
+      4. Käynnistä ajastin ja aloita uusi työjakso.<br/>
+      5. Kun olet työskennellyt esimerkiksi neljä jaksoa, pidä pidempi, 15-30 minuutin tauko.<br/>
+    </p>
+    <p>
+      Tärkeintä ei ole yllä olevien ohjeiden täydellinen noudattaminen, vaan se, että työn ja taukojen
+      jaksottaminen parantaa keskittymiskykyäsi. Taukojen aikana liikkuminen vetreyttää kehoa ja 
+      tarjoaa aivoille lisää happea, jolloin niiden ei tarvitse työskennellä esimerkiksi pelkän kofeiinin voimalla :)
+    </p>
+    <p>
+      Tsemppiä työpäivään!
+    </p>
+  </div>
+  <div class="modal-footer">
+    <button 
+      type="button" 
+      class="btn btn-secondary" 
+      (click)="c()">
+      Sulje
+    </button>
+  </div>
+</ng-template>

@@ -3,10 +3,17 @@ import {
   Input, 
   Output, 
   EventEmitter, 
-  OnInit 
+  OnInit,
+  ViewChild
 } from '@angular/core';
 
+import {
+  NgbModal
+} from '@ng-bootstrap/ng-bootstrap';
+
 import { BrowserTitleService } from '../browser-title.service';
+import { SettingsModalComponent } from '../settings-modal/settings-modal.component';
+
 
 @Component({
   selector: 'app-timer',
@@ -27,15 +34,18 @@ export class TimerComponent implements OnInit {
   @Output()
   resetTimer = new EventEmitter();
 
+  @ViewChild('infoWindow')
+  infoWindow;
+
   time:number = 0;
   running: boolean = false;
   intervalId = null;
   breakActive: boolean = false;
 
-  titleService: BrowserTitleService = null;
 
-  constructor(titleService: BrowserTitleService) {
-    this.titleService = titleService;
+  constructor(
+    private titleService: BrowserTitleService,
+    private modalService: NgbModal) {
   }
 
   ngOnInit() {
@@ -77,6 +87,7 @@ export class TimerComponent implements OnInit {
   }
 
   resetWith(newTime) {
+    this.breakActive = false;
     clearInterval(this.intervalId);
     this.running = false;
     this.time = newTime;
@@ -103,6 +114,13 @@ export class TimerComponent implements OnInit {
       return `0${val}`;
     }
     return val.toString();
-  }  
+  }
 
+  openSettings() {
+    this.modalService.open(SettingsModalComponent);
+  }
+
+  openInfo() {
+    this.modalService.open(this.infoWindow);
+  }
 }

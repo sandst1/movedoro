@@ -11,6 +11,7 @@
 
 .break-text.visible {
   display: block;
+  font-size: 6em;
   position: fixed;
   width: 90vw;
   text-align: center;

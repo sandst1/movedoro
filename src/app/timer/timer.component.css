@@ -32,32 +32,6 @@
   transition: font 0.25s ease;
 }
 
-.timer-button {
-  font-size: 2em;
-  padding: 5px;
-  cursor: pointer;
-  display: inline-block;
-  width: 100px;
-  height: 30px;
-  line-height: 30px;
-  text-align: center;
-  outline: none;
-
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);  
-}
-
-.timer-button:first-child {
-  margin-right: 5px;
-}
-
-.timer-button:nth-child(2) {
-  margin-left: 5px;
-}
-
-.timer-button:hover {
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);  
-}
-
 .app-toolbar {
   text-align: left;
   width: 150px;
@@ -71,12 +45,13 @@
   display: inline-block;
 }
 
+.btn {
+  cursor: pointer; 
+  min-width: 100px !important;
+}
+
 @media only screen and (max-width:768px) {
   .timer-value {
     font-size: 7em;
-  }
-
-  .timer-button {
-    width: 75px;
   }
 }
