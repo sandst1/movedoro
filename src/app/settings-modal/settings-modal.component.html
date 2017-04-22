@@ -5,9 +5,49 @@
   </button>
 </div>
 <div class="modal-body">
-  <p></p>
+  <div class="settings-row">
+    <div class="label">
+      Työjakson pituus (min)
+    </div>
+    <div class="value">
+      <input 
+        type="number" 
+        min="0"
+        [(ngModel)]="settings.pomodoroTime"/>
+    </div>
+  </div>
+
+  <div class="settings-row">
+    <div class="label">
+      Tauon pituus (min)
+    </div>
+    <div class="value">
+      <input 
+        type="number" 
+        min="0"
+        [(ngModel)]="settings.breakTime"/>
+    </div>
+  </div>
+
+  <div class="settings-row">
+    <div class="label">
+      Äänimerkki
+    </div>
+    <div class="value">
+      <input type="checkbox" [(ngModel)]="settings.soundOn"/>
+    </div>
+  </div>
+
+  <div class="settings-row">
+    <div class="label">
+      Työpöytäilmoitukset
+    </div>
+    <div class="value">
+      <input type="checkbox" [(ngModel)]="settings.notifications"/>
+    </div>
+  </div>    
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss('')">Peruuta</button>
-  <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Tallenna</button>
+  <button type="button" class="btn btn-secondary" (click)="cancel()">Peruuta</button>
+  <button type="button" class="btn btn-secondary" (click)="save()">Tallenna</button>
 </div>

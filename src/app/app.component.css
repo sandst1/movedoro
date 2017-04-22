@@ -16,7 +16,7 @@
 
 .app-title {
   width: 100vw;
-  margin: 0 auto;
+  margin: 5px auto 0 auto;
   text-transform: lowercase;
   font-family: 'Over the Rainbow', cursive, sans-serif;
   font-size: 4em;

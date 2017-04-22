@@ -3,6 +3,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { TimerComponent } from '../timer/timer.component';
 import { BrowserTitleService } from '../browser-title.service';
 import { BreakThoughtService } from '../break-thought.service';
+import { SettingsService } from '../settings.service';
+import { AudioAPIWrapper } from '../audio-wrapper';
 
 @Component({
   selector: 'app-pomodoro',
@@ -13,29 +15,39 @@ export class PomodoroComponent implements OnInit {
   defaultSuffix: string = 'Liikelaajentamo';
   pomodoroActive: boolean = true;
 
-  /*pomodoroLength: number = 25*60;
-  breakLength: number = 5*60;*/
+  pomodoroLength: number;
+  breakLength: number;
 
-  pomodoroLength: number = 4;
-  breakLength: number = 3;
-
-  timerSec: number = this.pomodoroLength;
+  timerSec: number;
   breakThought: string = "";
 
   @ViewChild('timer')
   timer: TimerComponent;
 
-  titleService: BrowserTitleService = null;
-  thoughtService: BreakThoughtService = null
-
   constructor(
-    titleService: BrowserTitleService,
-    thoughtService: BreakThoughtService
+    private titleService: BrowserTitleService,
+    private thoughtService: BreakThoughtService,
+    private settingsService: SettingsService,
+    private audio: AudioAPIWrapper
   ) { 
-    this.titleService = titleService;
-    this.thoughtService = thoughtService;
-
     this.resetTimer = this.resetTimer.bind(this);
+
+    this.settingsService
+      .changedSettings
+      .subscribe((settings) => {        
+        if (settings && settings.pomodoroTime && settings.breakTime) {
+          this.pomodoroLength = settings.pomodoroTime*60;
+          this.breakLength = settings.breakTime*60;
+          this.resetTimer();
+        }
+      });
+
+    const settings = this.settingsService.getSettings();
+    /*this.pomodoroLength = settings.pomodoroTime*60;
+    this.breakLength = settings.breakTime*60;*/
+    this.pomodoroLength=4;
+    this.breakLength=3;
+    this.timerSec = this.pomodoroLength;
   }
 
   ngOnInit() {
@@ -63,6 +75,8 @@ export class PomodoroComponent implements OnInit {
       this.titleService.setTitle('');
     }
     this.timer.setBreak(!this.pomodoroActive);
+    this.audio.Load('./assets/bell.wav');
+    this.audio.Play();
   }
 
   resetTimer() {
@@ -71,5 +85,4 @@ export class PomodoroComponent implements OnInit {
     this.titleService.setSuffix(this.defaultSuffix);
     this.titleService.setTitle('');    
   }
-
 }

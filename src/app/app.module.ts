@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LocalStorageModule } from 'angular-2-local-storage';
 
 import { AppComponent } from './app.component';
 import { TimerComponent } from './timer/timer.component';
@@ -13,6 +14,9 @@ import { SettingsModalComponent } from './settings-modal/settings-modal.componen
 
 import { BrowserTitleService} from './browser-title.service';
 import { BreakThoughtService } from './break-thought.service';
+import { SettingsService } from './settings.service';
+import { AudioAPIWrapper } from './audio-wrapper';
+
 
 @NgModule({
   declarations: [
@@ -26,14 +30,20 @@ import { BreakThoughtService } from './break-thought.service';
     BrowserModule,
     FormsModule,
     HttpModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    LocalStorageModule.withConfig({
+      prefix: 'tauotin',
+      storageType: 'localStorage'
+    })    
   ],
   entryComponents: [
     SettingsModalComponent
   ],
   providers: [
     BrowserTitleService,
-    BreakThoughtService
+    BreakThoughtService,
+    SettingsService,
+    AudioAPIWrapper
   ],
   bootstrap: [AppComponent]
 })

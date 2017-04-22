@@ -45,9 +45,9 @@
   display: inline-block;
 }
 
-.btn {
-  cursor: pointer; 
-  min-width: 100px !important;
+.app-toolbar .fa:hover {
+  color: #e6e6e6;
+  cursor: pointer;
 }
 
 @media only screen and (max-width:768px) {

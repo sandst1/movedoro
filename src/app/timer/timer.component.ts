@@ -14,7 +14,6 @@ import {
 import { BrowserTitleService } from '../browser-title.service';
 import { SettingsModalComponent } from '../settings-modal/settings-modal.component';
 
-
 @Component({
   selector: 'app-timer',
   templateUrl: './timer.component.html',
@@ -42,10 +41,10 @@ export class TimerComponent implements OnInit {
   intervalId = null;
   breakActive: boolean = false;
 
-
   constructor(
     private titleService: BrowserTitleService,
     private modalService: NgbModal) {
+    this.resetWith = this.resetWith.bind(this);
   }
 
   ngOnInit() {
@@ -117,7 +116,10 @@ export class TimerComponent implements OnInit {
   }
 
   openSettings() {
-    this.modalService.open(SettingsModalComponent);
+    this.modalService.open(
+      SettingsModalComponent, {
+        windowClass: 'settings-modal'
+      });
   }
 
   openInfo() {

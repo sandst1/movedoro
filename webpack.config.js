@@ -71,6 +71,10 @@ module.exports = {
         "loader": "raw-loader"
       },
       {
+        "test": /\.wav$/,
+        "loader": "file-loader"
+      },
+      {
         "test": /\.(eot|svg)$/,
         "loader": "file-loader?name=[name].[hash:20].[ext]"
       },
