@@ -1,8 +1,8 @@
-<div class="break-text" [class.visible]="!pomodoroActive">
+<div class="break-text" [class.visible]="!pomodoroActive">  
   {{breakThought}}
 </div>
 
-<div class="pomodoro" [class.break-active]="!pomodoroActive">
+<div class="pomodoro">
 
   <app-timer
     #timer
@@ -11,6 +11,6 @@
     (timerStarted)="timerStarted()"
     (resetTimer)="resetTimer()"
   >
-  </app-timer>
+  </app-timer>  
 
 </div>

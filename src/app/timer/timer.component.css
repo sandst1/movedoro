@@ -1,16 +1,17 @@
 .app-timer {
-  width: 250px;
-  position: fixed;
-  left: 42vw;
-  bottom: 44vh;
+  position: absolute;
+  width: 100vw;
+  left: 0;
+  bottom: 40vh;
+  margin: 0 auto;
+  -webkit-transition: bottom 0.2s ease-in;
   transition: bottom 0.2s ease-in;
+  margin-top: 20vh;
 }
 
 .app-timer.break-active {
-  position: fixed;
-  left: 42vw;
   bottom: 50px;
-  transition: bottom 0.25s ease-out;
+  transition: bottom 0.35s ease-out;
 }
 
 .app-timer.break-active .timer-value {
@@ -55,4 +56,27 @@
 
 .timer-button:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);  
+}
+
+.app-toolbar {
+  text-align: left;
+  width: 150px;
+  margin: 15px auto 0 auto;
+  text-align: center;
+}
+
+.app-toolbar .fa {
+  margin: 0 25px;
+  font-size: 24px;
+  display: inline-block;
+}
+
+@media only screen and (max-width:768px) {
+  .timer-value {
+    font-size: 7em;
+  }
+
+  .timer-button {
+    width: 75px;
+  }
 }

@@ -6,6 +6,7 @@
 
   font-family: 'Open Sans', sans-serif;
   font-size: 62.5%;
+  position: relative;
 
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -14,22 +15,32 @@
 }
 
 .app-title {
-  width: 300px;
+  width: 100vw;
   margin: 0 auto;
   text-transform: lowercase;
   font-family: 'Over the Rainbow', cursive, sans-serif;
   font-size: 4em;
-  padding: 0.5em 0;
   cursor: pointer;
   position: relative;
 }
 
-.app-subtitle {
+.app-title .title {
+  width: 300px;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+}
+
+.title .title-text {
+  margin-left: -12px;
+}
+
+.title .subtitle {
   font-family: 'Open Sans', sans-serif;
   text-transform: lowercase;
   position: absolute;
   right: 13px;
-  bottom: 13px;
+  bottom: -8px;
   text-align: right;
   font-size: 0.70em;
 }
