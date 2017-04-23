@@ -18,9 +18,7 @@ export class SettingsModalComponent {
     public activeModal: NgbActiveModal,
     private settingsService: SettingsService
   ) {
-    
     this.settings = this.settingsService.getSettings();
-    console.dir(this.settings);
     this.pomodoroTimeMin = Math.floor(this.settings.pomodoroTime / 60);
     this.breakTimeMin = Math.floor(this.settings.breakTime / 60);
   }
