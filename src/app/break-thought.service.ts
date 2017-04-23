@@ -8,7 +8,7 @@ export class BreakThoughtService {
   thoughtsToUse: Array<string> = null;
 
   constructor(private http:Http) {
-    this.http.get('/assets/thoughts.json')
+    this.http.get('./assets/thoughts.json')
       .subscribe(res => {
         const json = res.json();
         if (json && json.thoughts) {
