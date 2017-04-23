@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { LocalStorageModule } from 'angular-2-local-storage';
+import { LocalStorageModule } from 'angular-2-local-storage'; 
+import { PushNotificationsModule } from 'angular2-notifications';
 
 import { AppComponent } from './app.component';
 import { TimerComponent } from './timer/timer.component';
@@ -15,8 +16,11 @@ import { SettingsModalComponent } from './settings-modal/settings-modal.componen
 import { BrowserTitleService} from './browser-title.service';
 import { BreakThoughtService } from './break-thought.service';
 import { SettingsService } from './settings.service';
-import { AudioAPIWrapper } from './audio-wrapper';
 
+
+import {enableProdMode} from '@angular/core';
+
+enableProdMode();
 
 @NgModule({
   declarations: [
@@ -34,7 +38,8 @@ import { AudioAPIWrapper } from './audio-wrapper';
     LocalStorageModule.withConfig({
       prefix: 'tauotin',
       storageType: 'localStorage'
-    })    
+    }),
+    PushNotificationsModule
   ],
   entryComponents: [
     SettingsModalComponent
@@ -42,8 +47,7 @@ import { AudioAPIWrapper } from './audio-wrapper';
   providers: [
     BrowserTitleService,
     BreakThoughtService,
-    SettingsService,
-    AudioAPIWrapper
+    SettingsService
   ],
   bootstrap: [AppComponent]
 })

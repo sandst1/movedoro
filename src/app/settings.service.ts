@@ -11,10 +11,11 @@ export class SettingsService {
   SETTINGS_KEY:string = 'settings';
 
   defaultSettings = {
-    pomodoroTime: 25,
-    breakTime: 5,
+    pomodoroTime: 25*60,
+    breakTime: 5*60,
     soundOn: true,
-    notifications: true
+    notifications: false,
+    volume: 0.5
   };
 
   constructor(

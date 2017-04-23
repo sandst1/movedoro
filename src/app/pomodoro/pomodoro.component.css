@@ -10,18 +10,26 @@
 }
 
 .break-text.visible {
-  display: block;
+  display: table;
   font-size: 6em;
   position: fixed;
   width: 90vw;
+  height: 50vh;
   text-align: center;
   margin: 0 auto;
-  bottom: 52vh;
+  top: 18vh;
   opacity: 1;
   left: 5vw;
   -webkit-transition: opacity 0.5s ease-in;
   transition: opacity 0.5s ease-in;
 }
+
+.break-text .text-cell {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
 
 @media only screen and (max-width:768px) {
   .break-text.visible {
