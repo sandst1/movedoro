@@ -7,8 +7,7 @@ import { BrowserTitleService } from '../browser-title.service';
 import { BreakThoughtService } from '../break-thought.service';
 import { SettingsService } from '../settings.service';
 
-declare var AudioContext:any;
-declare var webkitAudioContext:any;
+import { Howler, Howl } from 'howler';
 
 @Component({
   selector: 'app-pomodoro',
@@ -22,9 +21,6 @@ export class PomodoroComponent implements OnInit {
 
   timerSec: number;
   breakThought: string = "";
-
-  audio: any;
-  audioCtx = new (AudioContext || webkitAudioContext)();
 
   @ViewChild('timer')
   timer: TimerComponent;
@@ -52,11 +48,6 @@ export class PomodoroComponent implements OnInit {
 
     this.settings = Object.assign({}, this.settingsService.getSettings());
     this.timerSec = this.settings.pomodoroTime;
-
-    this.audio = new Audio();
-    this.audio.autoplay = false;
-    this.audio.preload = 'auto';
-    this.audio.autobuffer = true;
   }
 
   ngOnInit() {
@@ -98,12 +89,23 @@ export class PomodoroComponent implements OnInit {
 
   playBell() {
     if (this.settings.soundOn) {
-      this.audio.volume = this.settings.volume;
-      this.audio.pause();
-      this.audio.src = './assets/bell.mp3';
-      this.audio.load();
-      this.audio.play();
+      if (Howler.ctx && Howler.ctx.state && Howler.ctx.state == "suspended") {
+          Howler.ctx.resume().then(function() {
+            this.doPlayBell();
+          });
+      } else {
+        this.doPlayBell();
+      }
     }
+  }
+
+  doPlayBell() {
+    const sound = new Howl({
+      src: './assets/bell.mp3',
+      volume: this.settings.volume
+    });
+
+    sound.play();
   }
 
   showNotification(text: string) {

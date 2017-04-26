@@ -38,7 +38,7 @@ export class SettingsModalComponent {
   save() {
     if (this.dataIsValid()) {
       this.settings.pomodoroTime = this.pomodoroTimeMin * 60;
-      this.settings.breakTIme = this.breakTimeMin * 60;
+      this.settings.breakTime = this.breakTimeMin * 60;
       this.settingsService.saveSettings(this.settings);
       this.activeModal.close();
     }
