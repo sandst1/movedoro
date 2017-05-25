@@ -51,7 +51,7 @@ module.exports = {
     "path": path.join(process.cwd(), "dist"),
     "filename": "[name].bundle.js",
     "chunkFilename": "[id].chunk.js",
-    /*"publicPath": "/tauotin/"*/
+    "publicPath": "/tauotin/"
   },
   "module": {
     "rules": [
@@ -228,7 +228,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       "template": "./src/index.html",
       "filename": "./index.html",
-      "hash": false,
+      "hash": true,
       "inject": true,
       "compile": true,
       "favicon": false,
